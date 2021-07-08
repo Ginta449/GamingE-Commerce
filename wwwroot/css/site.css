@@ -1,0 +1,279 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+a.navbar-brand {
+  white-space: normal;
+  text-align: center;
+  word-break: break-all;
+}
+
+/* Provide sufficient contrast against white background */
+a {
+  color: #0366d6;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  font-size: 14px;
+}
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.border-top {
+  border-top: 1px solid #e5e5e5;
+}
+.border-bottom {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+  font-size: 1rem;
+  line-height: inherit;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  white-space: nowrap;
+  line-height: 60px; /* Vertically center the text there */
+}
+
+/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+a.navbar-brand {
+    white-space: normal;
+    text-align: center;
+    word-break: break-all;
+}
+
+/* Provide sufficient contrast against white background */
+a {
+    color: #0366d6;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+.border-top {
+    border-top: 1px solid #e5e5e5;
+}
+
+.border-bottom {
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+    font-size: 1rem;
+    line-height: inherit;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    line-height: 60px; /* Vertically center the text there */
+}
+
+input[type="email"] {
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+input[type="password"] {
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.contact {
+    background-image: url("images/background.png");
+    background-size: 100% 100%;
+    width: 100%;
+    height: 100vh;
+}
+
+.head {
+    background-color: rgb(21, 134, 199);
+    border-radius: 5px;
+    margin-top: -40px;
+    -webkit-box-shadow: 10px 10px 20px -8px rgba(41,147,204,1);
+    -moz-box-shadow: 10px 10px 20px -8px rgba(41,147,204,1);
+    box-shadow: 10px 10px 20px -8px rgba(41,147,204,1);
+}
+
+.fas {
+    color: rgba(41,147,204,1);
+    font-size: 27px;
+}
+
+body {
+    font-family: "Lato", sans-serif;
+}
+
+p {
+    color: gray;
+    font-size: 15px;
+}
+
+.effect-1 {
+    border: 0;
+    outline: none;
+    padding: 7px 0;
+    width: 100%;
+    border-bottom: 1px solid #ccc
+}
+
+    .effect-1 ~ .focus-border {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        width: 0;
+        height: 2px;
+        background-color: rgba(41,147,204,1);
+        transition: 0.4s;
+    }
+
+    .effect-1:focus ~ .focus-border {
+        width: 100%;
+        transition: 0.4s;
+        left: 0;
+    }
+
+.btn1 {
+    background: rgba(41,147,204,1);
+    color: honeydew;
+    border: none;
+    outline: none;
+    width: 145px;
+    height: 40px;
+    border-radius: 5px;
+}
+
+.card1 {
+    width: 444px
+}
+.checkout {
+    background: green;
+    color: honeydew;
+    border: none;
+    outline: none;
+    width: 170px;
+    height: 32px;
+    border-radius: 0px;
+}
+
+.checkoutTwo {
+    background: red;
+    color: honeydew;
+    border: none;
+    outline: none;
+    width: 170px;
+    height: 32px;
+    border-radius: 0px;
+}
+
+#checkout:hover {
+    background: #065005;
+    color: honeydew;
+    border: none;
+    outline: none;
+    width: 170px;
+    height: 32px;
+    border-radius: 0px;
+}
+
+#checkoutTwo:hover {
+    background: #931313;
+    color: honeydew;
+    border: none;
+    outline: none;
+    width: 170px;
+    height: 32px;
+    border-radius: 0px;
+}
+
+.form-control-borderless {
+    border: none;
+}
+
+    .form-control-borderless:hover, .form-control-borderless:active, .form-control-borderless:focus {
+        border: none;
+        outline: none;
+        box-shadow: none;
+    }

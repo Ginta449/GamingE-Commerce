@@ -1,0 +1,101 @@
+﻿@using Microsoft.AspNetCore.Identity;
+@using GamingE_Commerce.Models;
+@inject SignInManager<ApplicationUser> signInManager;
+@Html.Partial("_Favicons")
+<DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>@ViewData["Title"] - Gaming eCommerce</title>
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap-superhero.min.css" />
+        <link rel="stylesheet" href="~/css/site.css" />
+    </head>
+    <body>
+        <header>
+            <nav class="border-bottom navbar navbar-expand-lg navbar-dark bg-primary box-shadow mb-3">
+                <div class="container">
+                    <a class="navbar-brand" asp-area="" asp-controller="Games" asp-action="Index"><img class="active" src="~/Images/logo.png" width="100" height="50" /></a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                        <partial name="_LoginPartial" />
+                        <ul class="navbar-nav flex-grow-1">
+                            <li class="nav-item">
+                                <a class="nav-link text-white" asp-area="" asp-controller="Games" asp-action="Index">Home</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link text-white dropdown-toggle" asp-action="AllGames" id="navbarDropdownMenuLink"
+                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Platforms
+                                </a>
+                                <div class="dropdown-menu text-light" aria-labelledby="navbarDropdownMenuLink">
+                                    <a class="dropdown-item" asp-controller="Games"
+                                       asp-action="AllGames">All Games</a>
+                                    <a class="dropdown-item" asp-controller="Games"
+                                       asp-action="PlaystationGames">Playstation 5</a>
+                                    <a class="dropdown-item" asp-controller="Games"
+                                       asp-action="XBoxGames">XBox</a>
+                                    <a class="dropdown-item" asp-controller="Games"
+                                       asp-action="NintendoGames">Nintendo</a>
+                                    <a class="dropdown-item" asp-controller="Games"
+                                       asp-action="PCGames">PC</a>
+                                </div>
+                            </li>
+
+                            
+
+                            @if (signInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+                            {
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link text-white dropdown-toggle" href="#" id="navbarDropdownMenuLink"
+                                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Manage Admin
+                                    </a>
+                                    <div class="dropdown-menu text-light" aria-labelledby="navbarDropdownMenuLink">
+                                        <a class="dropdown-item" asp-controller="Admin"
+                                           asp-action="ListUsers">Users</a>
+                                        <a class="dropdown-item" asp-controller="Admin"
+                                           asp-action="ListRoles">Roles</a>
+                                    </div>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link text-white dropdown-toggle" href="#" id="navbarDropdownMenuLink"
+                                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Manage Games
+                                    </a>
+                                    <div class="dropdown-menu text-light" aria-labelledby="navbarDropdownMenuLink">
+                                        <a class="dropdown-item" asp-controller="Games"
+                                           asp-action="AllGames">All Games</a>
+                                        <a class="dropdown-item" asp-controller="Games"
+                                           asp-action="Create">Create</a>
+                                    </div>
+                                </li>
+
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header><br />
+                 <div class="container">
+                     <main role="main" class="pb-3">
+                         @RenderBody()
+                     </main>
+                 </div>
+
+        <br /><br />
+        <footer class="border-top footer text-white navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                &copy; 2021 - BMGames - <a asp-area="" asp-controller="Games" asp-action="Index" class="text-white">Home</a> - <a asp-area="" asp-controller="Games" asp-action="PlaystationGames" class="text-white">Playstation</a> - <a asp-area="" asp-controller="Games" asp-action="XboxGames" class="text-white">Xbox</a> - <a asp-area="" asp-controller="Games" asp-action="NintendoGames" class="text-white">Nintendo Switch</a> - <a asp-area="" asp-controller="Games" asp-action="PCGames" class="text-white">PC</a>
+            </div>
+
+        </footer>
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+        @RenderSection("Scripts", required: false)
+    </body>
+</html>

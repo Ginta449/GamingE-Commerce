@@ -1,0 +1,64 @@
+﻿@page
+@model RegisterModel
+
+
+<h1>@ViewData["Title"]</h1>
+
+<div class="text-center mt-5 ">
+    <br><br><br>
+
+            <form asp-route-returnUrl="@Model.ReturnUrl" method="post" enctype="multipart/form-data" style="max-width:300px; margin:auto;">
+                <img class="mt-4 mb-4" src="~/images/logo.png" height="130" width="150" alt="logo">
+                <h1 class="h3 mb-3 font-weight-normal ">Create An Account</h1>
+
+
+                <input asp-for="Input.Email" class="form-control" placeholder="Email..." />
+                <span asp-validation-for="Input.Email" class="text-danger"></span>
+
+                <br />
+
+                <input asp-for="Input.Password" class="form-control" placeholder="Password..." />
+                <span asp-validation-for="Input.Password" class="text-danger"></span>
+                <br />
+
+                <input asp-for="Input.ConfirmPassword" class="form-control" placeholder="Confirm Password..." />
+                <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+                <br />
+
+                @*Optional adding of profile image on registration*@
+                @*<label style="float:left">Upload a profile picture</label>
+                <input type="file" name="file" />
+                <span asp-validation-for="Input.ImagePath" class="text-danger"></span>
+                <br />*@
+
+                <div class="mt-3">
+                    <button type="submit" class="btn btn-lg btn-info btn-block" value="Login"> Create Account </button>
+                </div>
+
+            </form>
+
+    <br />
+
+    <form>
+        <div>
+            <p>
+                @if (Model.ExternalLogins != null)
+                {
+                    @foreach (var provider in Model.ExternalLogins)
+                    {
+
+                        <button type="submit" class="btn  btn-lg btn-outline-dark" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">
+                            <img width="20" style="margin-bottom:3px; margin-right:8px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png" />Login with Google Account
+                        </button>
+                    }
+
+                }
+            </p>
+
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

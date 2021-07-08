@@ -1,0 +1,86 @@
+﻿@model IEnumerable<GamingE_Commerce.Models.Game>
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+@{
+    ViewData["Title"] = "Platforms";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>XBOX Games</h1>
+
+@if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+{
+    <p>
+        <a class="btn btn-primary mb-3"style="border-radius: 6px;"  asp-action="Create">Create New</a>
+    </p>
+}
+
+<table class="table table-dark table-striped">
+    <thead>
+        <tr>
+            <th>
+                Cover
+            </th>
+            <th>
+                Trailer
+            </th>
+            <th>
+                Game Name
+            </th>
+            <th>
+                Rating
+            </th>
+            <th>
+                Price
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <img class="img-responsive" alt="Game Consoles" src="~/Images/@Html.DisplayFor(modelItem => item.GameImageName)" width="250" height="215" />
+                </td>
+                <td>
+                    <iframe width="460" height="215" src="@Html.DisplayFor(modelItem => item.VideoLinkName)" title="YouTube video player" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+                </td>
+                <td>
+                    <p class="text-white font-weight-bold">@Html.DisplayFor(modelItem => item.GameName)</p>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserReview.UserRating)
+                </td>
+                <td>€ @Html.DisplayFor(modelItem => item.GamePrice)</td>
+                <td>
+                    @if (!SignInManager.IsSignedIn(User) || SignInManager.IsSignedIn(User) && !User.IsInRole("Admin"))
+                    {
+                        <div class="addtocart">
+                            <p class="button">
+                                <a class="btn btn-success btn-sm" style="border-radius: 6px;"
+                                   asp-controller="ShoppingCart"
+                                   asp-action="AddToShoppingCart"
+                                   asp-route-Id="@item.Id">
+                                    Add to Cart
+                                </a>
+                            </p>
+                        </div>
+                    }
+                    <a class="btn btn-primary btn-sm" style="border-radius: 6px;" asp-action="Details" asp-route-id="@item.Id">Details</a>
+                    @if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+                    {
+                        <br /><br />
+                        <a class="btn btn-success btn-sm" style="border-radius: 6px;" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                        <br /><br />
+                        <a class="btn btn-danger btn-sm" style="border-radius: 6px;" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

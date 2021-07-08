@@ -1,0 +1,104 @@
+﻿@model IEnumerable<GamingE_Commerce.Models.Platform>
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+@{
+    ViewData["Title"] = "Platforms";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+
+<form asp-controller="Games" asp-action="Search" style="margin-top:-32px">
+    <div class="container-lg my-auto">
+
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10 col-lg-8">
+
+                <div class="card-body row no-gutters align-items-center">
+
+                    <!--end of col-->
+                    <div class="col" style="padding-right:15px">
+                        <input class="form-control form-control-lg form-control-borderless" type="search" name="SearchString" placeholder="Search for Games or Keywords" height="50" style="border-radius:21px;">
+                    </div>
+                    <!--end of col-->
+                    <div class="col-auto">
+                        <button class="form-control-lg btn btn-block btn-success" value="Search" type="submit" style="height:40px; width:80px; border-radius: 6px;" >Search</button>
+                    </div>
+                    <!--end of col-->
+                </div>
+
+            </div>
+            <!--end of col-->
+        </div>
+    </div>
+</form>
+
+
+
+<div class="background">
+    <div id="slideBanner" class="container-lg my-auto" style="z-index:900">
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+
+            <ol class="carousel-indicators">
+                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#myCarousel" data-slide-to="1"></li>
+                <li data-target="#myCarousel" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="~/Images/Hero-Image_12112020.jfif" alt="First Slide">
+                </div>
+                <div class="carousel-item">
+                    <img src="~/Images/supermario3d.jfif" alt="Second Slide">
+                </div>
+                <div class="carousel-item">
+                    <img src="~/Images/wz.jfif" alt="Third Slide">
+                </div>
+
+            </div>
+            <a class="carousel-control-prev" href="#myCarousel" data-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </a>
+            <a class="carousel-control-next" href="#myCarousel" data-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </a>
+        </div>
+    </div>
+</div>
+
+<br />
+
+<div class="container d-flex justify-content-center mt-50 mb-50">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-4 mt-2">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="card-img-actions">
+                            <img src="~/Images/@Html.DisplayFor(modelItem => item.PlatformImageName)" class="card-img img-fluid" alt="">
+                        </div>
+                    </div>
+                    <div class="card-body text-center">
+                        <div class="mb-2">
+                            <h6 class="font-weight-semibold mb-2"> <a href="" class="text-default mb-2" data-abc="true">@Html.DisplayFor(modelItem => item.PlatformName)</a> </h6> <a href="#" class="text-muted" data-abc="true">Experience Gaming</a>
+                        </div>
+                        <div class="addtocart">
+                            <p class="button">
+                                <a class="btn btn-success btn-sm" style="border-radius:6px"
+                                   asp-action="@item.aspRouteIdName">
+
+                                    View Games
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        }
+    </div>
+</div>

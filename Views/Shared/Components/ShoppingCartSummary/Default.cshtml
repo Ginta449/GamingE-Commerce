@@ -1,0 +1,16 @@
+﻿@using GamingE_Commerce.ViewModels
+@model ShoppingCartViewModel
+
+@if (Model.ShoppingCart.ShoppingCartItems.Count > 0)
+{
+    <li>
+        <a>
+            <span class="glyphicon glyphicon-sh"></span>
+            <span id="cart-status" class="text-light">
+                <img  height="20" width="20" src="~/Images/cart3.svg" />
+
+                @Model.ShoppingCart.ShoppingCartItems.Count
+            </span>
+        </a>
+    </li>
+}

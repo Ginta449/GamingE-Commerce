@@ -1,0 +1,56 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+@model GamingE_Commerce.Models.Game
+
+
+@{ ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml"; }
+
+
+
+<h1>Details</h1>
+
+<div>
+    <h4>@Html.DisplayFor(model => model.GameName)</h4>
+    <hr />
+    <div class="d-flex justify-content-center container mt-2">
+        <div class="card1 p-3 bg-grey">
+            <i class="fa fa-apple"></i>
+            <div class="about-product text-center mt-2">
+                <h6 class="mt-0 font-weight-bold text-white-50">@Html.DisplayFor(model => model.GameName)</h6>
+                <img src="~/Images/@Html.DisplayFor(model => model.GameImageName)" width="350" height="250" />
+
+            </div>
+            <div class="stats mt-2">
+                <div class="d-flex justify-content-between p-price" width="300">@Html.DisplayFor(model => model.GameDescription) </div>
+                <br />
+                <div class="d-flex justify-content-between p-price"><span>Release date</span><span>@Html.DisplayFor(model => model.GameReleased)</span></div>
+                <br />
+                <div class="d-flex justify-content-between p-price"><span>Platform</span><span>@Html.DisplayFor(model => model.Platform.PlatformName)</span></div>
+
+
+
+            </div>
+            <div class="d-flex justify-content-between total font-weight-bold mt-4"><span>Total</span><span>€@Html.DisplayFor(model => model.GamePrice)</span></div>
+            <div class="addtocart">
+                <p class="button">
+                    <a class="btn btn-success btn btn-lg  btn-block " style="border-radius: 9px;" asp-controller="ShoppingCart" asp-action="AddToShoppingCart" asp-route-Id="@Model.Id">
+                        Add to Cart
+                    </a>
+                </p>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<div>
+    @if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+    {
+        <a class="btn btn-success btn-sm" style="border-radius: 6px;" asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
+    }
+    <a class="btn btn-primary btn-sm" style="border-radius: 6px;"  asp-action="AllGames">Back to List</a>
+
+    <a class="btn btn-danger btn-sm" style="border-radius: 6px;" asp-action="Index">Exit</a>
+</div>

@@ -1,0 +1,134 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+@model GamingE_Commerce.Models.ApplicationUser
+
+
+@{ ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml"; 
+}
+
+
+
+<h1>Details</h1>
+
+<div>
+    <h4>@Html.DisplayFor(model => model.UserName)</h4>
+    <hr />
+    <div class="container">
+        <div class="row gutters">
+
+            <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <div class="row gutters">
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                <h6 class="mt-0 font-weight-bold text-white-50">@Html.DisplayFor(model => model.UserName)</h6>
+                                @*<img src="~/Images/@Html.DisplayFor(model => model.GameImageName)" width="500" />*@
+                            </div>
+
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="form-group">
+                                    <span>First Name</span>
+                                    <span class="form-control">@Html.DisplayFor(model => model.FirstName)</span>
+                                </div>
+                            </div>
+
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="form-group">
+                                    <span>Last Name</span>
+                                    <span class="form-control">@Html.DisplayFor(model => model.LastName)</span>
+                                </div>
+                            </div>
+
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="form-group">
+                                    <span>Address Line 1</span>
+                                    <span class="form-control">@Html.DisplayFor(model => model.Address1)</span>
+                                </div>
+                            </div>
+
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="form-group">
+                                    <span>Address Line 2</span>
+                                    <span class="form-control">@Html.DisplayFor(model => model.Address2)</span>
+                                </div>
+                            </div>
+
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="form-group">
+                                    <span>Town</span>
+                                    <span class="form-control">@Html.DisplayFor(model => model.Town)</span>
+                                </div>
+                            </div>
+
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="form-group">
+                                    <span>County</span>
+                                    <span class="form-control">@Html.DisplayFor(model => model.County)</span>
+                                </div>
+                            </div>
+
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="form-group">
+                                </div>
+                            </div>
+
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="form-group">
+                                    <span>Eircode</span>
+                                    <span class="form-control">@Html.DisplayFor(model => model.Eircode)</span>
+                                </div>
+                            </div>
+
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="form-group">
+                                    <span>Phone Number</span>
+                                    <span class="form-control">@Html.DisplayFor(model => model.PhoneNumber)</span>
+                                </div>
+                            </div>
+                            <br /> <br />
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="form-group">
+                                    <span>Phone Number Authenticated: </span>
+                                    <br />
+                                    <span class="form-check">@Html.DisplayFor(model => model.PhoneNumberConfirmed)</span>
+                                </div>
+                            </div>
+
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="form-group">
+                                    <span>Email</span>
+                                    <span class="form-control">@Html.DisplayFor(model => model.Email)</span>
+                                </div>
+                            </div>
+
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="form-group">
+                                    <br />
+                                    <span>Email Authenticated:</span>
+                                    <span class="form-check"> @Html.DisplayFor(model => model.EmailConfirmed)</span>
+
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br /><br />
+
+
+@if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+{
+    <div>
+        <a class="btn btn-success btn-sm" style="border-radius: 6px;" asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
+
+        <a class="btn btn-primary btn-sm" style="border-radius: 6px;" asp-action="ListUsers">Back to List</a>
+
+        <a class="btn btn-danger btn-sm" style="border-radius: 6px;" asp-controller="Games" asp-action="Index">Exit</a>
+    </div>
+}

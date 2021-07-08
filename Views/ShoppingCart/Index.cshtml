@@ -1,0 +1,65 @@
+﻿@using GamingE_Commerce.ViewModels
+@model ShoppingCartViewModel
+
+
+
+<h2>Your shopping cart</h2>
+<h4>Here are the Exciting Games in your shopping cart.</h4>
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th class="text-center">Cover</th>
+            <th class="text-center">Game</th>
+            <th class="text-center">Price</th>
+            <th class="text-center">Quantity</th>
+            <th class="text-right">Subtotal</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var line in Model.ShoppingCart.ShoppingCartItems)
+        {
+            <tr>
+                <td><img class="img-responsive" alt="Game Consoles" src="~/Images/@line.Game.GameImageName" width="150" height="115" style="text-align:center" /></td>
+                <td class="text-center">@line.Game.GameName</td>
+                <td class="text-center">@line.Game.GamePrice.ToString("c")</td>
+                <td class="text-center">@line.NoOfItems</td>
+                <td class="text-right">
+                    @((line.NoOfItems * line.Game.GamePrice).ToString("c"))
+                </td>
+                <td class="text-center">
+                    <a class="btn btn-outline-danger"
+                       asp-controller="ShoppingCart"
+                       asp-action="RemoveFromShoppingCart"
+                       asp-route-Id="@line.Game.Id">Remove from Cart</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="4" class="text-right">Total:</td>
+            <td class="text-right font-weight-bold">
+                @Model.ShoppingCartTotal.ToString("c")
+            </td>
+        </tr>
+    </tfoot>
+</table>
+
+@*<form asp-action="Checkout">
+        <input type="hidden" />
+        <button class="text-white btn-primary">Checkout</button>
+        <a class="text-white btn-secondary" asp-action="Index">Back to List</a>
+    </form>*@
+<input class="checkoutTwo" type="button" value="Back To List" onclick="forwardMe2('url')">
+<input class="checkout" type="button" value="Proceed To Checkout" onclick="forwardMe('url')">
+
+
+@*<a class="text-white btn-primary"
+        @Html.ActionLink("Checkout", "Checkout", "ShoppingCart", new { @class = "continue-shopping" })
+    </a>*@
+
+<script src="~/js/site.js" asp-append-version="true"></script>
+
+
+
