@@ -65,8 +65,8 @@ namespace GamingE_Commerce
             services.AddAuthentication()
                .AddGoogle(opts =>
                {
-                   opts.ClientId = "1062457109411-e9kf6pg7o4cj0et3qah4tansp7sdugic.apps.googleusercontent.com";
-                   opts.ClientSecret = "PpMui0usc3KFXhiDS_o6qz9b";
+                   opts.ClientId = "youridkeygoogle.apps.googleusercontent.com";
+                   opts.ClientSecret = "yourclientsecretkey";
                    opts.SignInScheme = IdentityConstants.ExternalScheme;
                });
 
